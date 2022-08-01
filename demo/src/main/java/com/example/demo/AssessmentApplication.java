@@ -56,7 +56,7 @@ public class AssessmentApplication {
 		resumerepository.save(resume);
 		
 		List<Education> edulist=new LinkedList<Education>();
-		Education edu=new Education(12,"hbpose","98",resume);
+		Education edu=new Education(1,"hbpose","98",resume);
 		edurepo.save(edu);
 		edulist.add(edu);
 		

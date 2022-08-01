@@ -30,15 +30,15 @@ public class Resume implements Serializable  {
 	private String address;
 	private String emailid;
 	
-	@LazyCollection(LazyCollectionOption.FALSE)
+	//@LazyCollection(LazyCollectionOption.FALSE)
 	@ElementCollection(targetClass=String.class)
 	private List<String> skills;
 	
-	@LazyCollection(LazyCollectionOption.FALSE)
+	//@LazyCollection(LazyCollectionOption.FALSE)
 	@ElementCollection(targetClass=String.class)
 	private List<String> languages_known;
 	
-	@LazyCollection(LazyCollectionOption.FALSE)
+	//@LazyCollection(LazyCollectionOption.FALSE)
 	@ElementCollection(targetClass=String.class)
 	private List<String> interests;
 	
