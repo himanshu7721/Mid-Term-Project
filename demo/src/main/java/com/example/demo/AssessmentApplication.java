@@ -57,15 +57,18 @@ public class AssessmentApplication {
 		
 		List<Education> edulist=new LinkedList<Education>();
 		Education edu=new Education(1,"hbpose","98",resume);
-		edurepo.save(edu);
+		Education edu1=new Education(4,"cbse","70",resume);
 		edulist.add(edu);
+		edulist.add(edu1);
+		edurepo.saveAll(edulist);
 		
 		
 		List<Projects> projectlist=new LinkedList<Projects>();
 		Projects p=new Projects(9090,"sampleplproject","devoloper",resume);
-		prorepo.save(p);
+		Projects p1=new Projects(8080,"highend project","devoloper",resume);
 		projectlist.add(p);
-		
+		projectlist.add(p1);
+		prorepo.saveAll(projectlist);
 		
 		
 		try {
