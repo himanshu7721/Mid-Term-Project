@@ -1,0 +1,31 @@
+package com.example.demo;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+
+import com.example.demo.entity.Education;
+import com.example.demo.entity.Resume;
+
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
+public class AssessmentApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(AssessmentApplication.class, args);
+		LinkedList<String> skills=new LinkedList<>();
+		skills.add("java");
+		skills.add("java2");
+		LinkedList<String> languages=new LinkedList<>();
+		languages.add("hindi");
+		languages.add("english");
+		LinkedList<String> interests=new LinkedList<>()
+		interests.add("playing");
+		interests.add("game");
+		Education edu=new Education(6767,"hbpose","98");
+		Resume resume=new Resume("name","dob","8898989","address","emailid",skills,languages,interests,);
+	}
+
+}

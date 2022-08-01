@@ -1,0 +1,29 @@
+package com.example.demo.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import lombok.Data;
+
+@Entity
+@Data
+public class Education {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+	private String board_name;
+	private String percentage;
+	/*@ManyToOne
+    @JoinColumn(name = "resume_id")
+	Resume resume;*/
+	public Education(long id, String board_name, String percentage) {
+		super();
+		this.id = id;
+		this.board_name = board_name;
+		this.percentage = percentage;
+	}
+	
+
+}

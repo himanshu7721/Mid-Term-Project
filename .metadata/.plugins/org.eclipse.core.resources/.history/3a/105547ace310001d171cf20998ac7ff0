@@ -1,0 +1,37 @@
+package com.example.demo.entity;
+
+import java.util.LinkedList;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import lombok.Data;
+
+@Entity
+@Data
+public class Resume {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long resume_id;
+	private String name;
+	private String date_of_birth;
+	private String phonenumber;
+	private String address;
+	private String emailid;
+	private LinkedList<String> skills;
+	private LinkedList<String> languages_known;
+	private LinkedList<String> interests;
+	
+	@OneToMany(mappedBy = "resume", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	private LinkedList<Education> education_list;
+	
+	@OneToMany(mappedBy = "resume", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	private LinkedList<Projects> projects_Worked;
+	
+	
+}

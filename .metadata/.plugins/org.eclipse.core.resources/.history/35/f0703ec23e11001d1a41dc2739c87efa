@@ -1,0 +1,75 @@
+package com.example.demo;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Set;
+
+import org.hibernate.criterion.ProjectionList;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.annotation.Bean;
+
+import com.example.demo.entity.Education;
+import com.example.demo.entity.Projects;
+import com.example.demo.entity.Resume;
+import com.example.demo.repository.ResumeRepository;
+import com.example.demo.service.ResumeSavingService;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@SpringBootApplication
+public class AssessmentApplication {
+	@Autowired
+	static ResumeSavingService reservice;
+	
+	public static void main(String[] args) {
+		SpringApplication.run(AssessmentApplication.class, args);
+	}
+	
+	@Bean
+	  public CommandLineRunner demo(ResumeRepository repository) {
+		
+		
+		return (args) -> {
+			Set<String> skills=new HashSet<String>();
+		skills.add("java");
+		skills.add("java2");
+		
+		Set<String> languages=new HashSet<>();
+		languages.add("hindi");
+		languages.add("english");
+		
+		Set<String> interests=new HashSet<>();
+		interests.add("playing");
+		interests.add("game");
+		
+		Resume resume=new Resume(1,"name","dob","8898989","address","emailid",skills,languages,interests);
+		
+		
+		Set<Education> edulist=new HashSet<Education>();
+		Education edu=new Education(12,"hbpose","98",resume);
+		edulist.add(edu);
+		
+		Set<Projects> projectlist=new HashSet<Projects>();
+		Projects p=new Projects(9090,"sampleplproject","devoloper",resume);
+		projectlist.add(p);
+		
+		
+		
+		try {
+			reservice.saveresume(resume);
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		log.info("Table Data inserted");
+		};
+	}
+
+}
