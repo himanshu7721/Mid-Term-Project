@@ -1,0 +1,38 @@
+<header>
+    <mat-card *ngFor="let resume of Resumes" class="headername">
+    <mat-card-title>{{resume.name}}</mat-card-title>
+    <mat-card-subtitle style="color:aliceblue;">Resume</mat-card-subtitle>
+</mat-card>
+</header>
+
+
+
+<mat-card *ngFor="let resume of Resumes" class="headername">
+    <mat-card-title>Basic Details</mat-card-title>
+    <br>
+    <mat-card-content>&#9993;  {{resume.emailid}}</mat-card-content>
+    <mat-card-content>&#9906;  {{resume.address}}</mat-card-content>
+    <mat-card-content>&#9742;  {{resume.phonenumber}}</mat-card-content>
+    <mat-card-content>&#9741;  {{resume.date_of_birth}}</mat-card-content>
+    <mat-card-content></mat-card-content>
+    <mat-card-content></mat-card-content>
+
+</mat-card>
+
+
+<table>
+    <tr>
+        <td rowspan="2">
+            <mat-card *ngFor="let education of Education" class="headername">
+                <mat-card-header>Education</mat-card-header>
+                <mat-card-content>{{education[0]}}</mat-card-content>
+                </mat-card>  
+        </td>
+        <td>
+            <mat-card *ngFor="let resume of Resumes" class="headername">
+                <mat-card-content>{{resume.skills[0]}}</mat-card-content>
+                <mat-card-content>{{resume.skills[1]}}</mat-card-content>
+                </mat-card> 
+        </td>
+    </tr>
+</table>
