@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HelperService } from './service/helper.service';
 import { resume } from './service/Resume';
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,14 +10,10 @@ import { resume } from './service/Resume';
 })
 export class HomeComponent implements OnInit {
   Resumes:any;
-  Projects:any;
-  Education:any;
-  constructor(private helperservice:HelperService) { }
+  constructor(private helperservice:HelperService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getResumes();
-    this.getProjects();
-    this.getEducation();
   }
 
   private getResumes()
@@ -24,32 +21,27 @@ export class HomeComponent implements OnInit {
     this.helperservice.getallResumes().subscribe(data=>
       {
       this.Resumes=data;
-      localStorage.setItem("resumeid",this.Resumes.resume_id);
+      let id=this.Resumes[0].resume_id;
+      this.helperservice.setid(id);
       }
       );
       console.log(this.Resumes);
+      
   }
 
-  private getProjects()
-  {
-    const resume_id=localStorage.getItem("resumeid");
-    this.helperservice.getAllProjects(resume_id).subscribe(data=>
-      {
-      this.Projects=data;
-      }
-      );
-      console.log(this.Resumes);
-  }
+  
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogBoxComponent, {
+      width: '500px',
+      //data: {name: this.name, animal: this.animal},
+    });
 
-  private getEducation()
-  {
-    this.helperservice.getAllEducation(this.Resumes).subscribe(data=>
-      {
-      this.Education=data;
-      }
-      );
-      console.log(this.Resumes);
+    /*dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });*/
   }
+  
   /*private updateinfo()
   {
     this.helperservice.

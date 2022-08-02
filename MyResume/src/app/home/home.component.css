@@ -5,8 +5,29 @@
     background-color: rgb(81, 81, 114);
     color:aliceblue;
 }
+.header2
+{
+    background-color: rgb(168, 168, 222);
+}
+.header3
+{
+    background-color: rgb(206, 222, 222);
+}
 table{
     width: 100%;
     
 }
+mat-card-header
+{
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-style: italic;
+}
+mat-card-content
+{
+    font-size: x-large;
+}
 
+*
+{
+    font-style: oblique;
+}

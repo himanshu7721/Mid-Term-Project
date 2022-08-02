@@ -41,43 +41,106 @@ public class AssessmentApplication {
 		return (args) -> {
 			List<String> skills=new LinkedList<String>();
 		skills.add("java");
+		skills.add("c language");
+		skills.add("React JS");
+		skills.add("Angular JS");
+		skills.add("My SQL");
+		skills.add("HTML");
+		skills.add("CSS");
+		skills.add("javaScript");
+		skills.add("NOde JS");
+		skills.add("Data Structure");
+		skills.add("Eclipse");
 		skills.add("java2");
 		
 		List<String> languages=new LinkedList<>();
 		languages.add("hindi");
 		languages.add("english");
+		languages.add("frence");
 		
 		List<String> interests=new LinkedList<>();
 		interests.add("playing");
 		interests.add("game");
+		interests.add("Hiking");
+		interests.add("Coding");
+		interests.add("Travelling");
 		
-		Resume resume=new Resume(1,"name","dob","8898989","address","emailid",skills,languages,interests);
+		Resume resume=new Resume();
+		resume.setName("Himanshu Sharma");
+		resume.setAddress("Chandigarh");
+		resume.setDate_of_birth("11/07/1999");
+		resume.setEmailid("temp123@gmail.com");
+		resume.setPhonenumber("9876543210");
+		resume.setInterests(interests);
+		resume.setLanguages_known(languages);
+		resume.setSkills(skills);
 		
-		resumerepository.save(resume);
+		
+		
+		
+		
+		
+		//Education edu=new Education(1,"hbpose","98",resume);
+		
+		Education edu=new Education();
+		edu.setBoard_name("Saraswati Vidya Mandir High School,Namhol, Bilaspur (Himachal Pradesh)-10th");
+		edu.setPercentage("CGPA/Percentage- 78.0%");
+		edu.setResume(resume);
+		
+		
+		Education eduobj=new Education();
+		eduobj.setBoard_name("National Public Sen. Sec. School Dhundan, Solan (Himachal Pradesh)-12th");
+		eduobj.setPercentage("CGPA/Percentage- 75.80%");
+		eduobj.setResume(resume);
+		
+		Education eduobj1=new Education();
+		eduobj.setBoard_name("Bachelor in Computer Science Engineering from Chitkara University(Pursuing)");
+		eduobj.setPercentage("CGPA/Percentage- 98.80%");
+		eduobj.setResume(resume);
 		
 		List<Education> edulist=new LinkedList<Education>();
-		Education edu=new Education(1,"hbpose","98",resume);
-		Education edu1=new Education(4,"cbse","70",resume);
 		edulist.add(edu);
-		edulist.add(edu1);
-		edurepo.saveAll(edulist);
+		edulist.add(eduobj);
+		edulist.add(eduobj1);
 		
+		
+		//edurepo.saveAll(edulist);
+		
+		
+		
+		
+		Projects p=new Projects();
+		p.setProject_name("Project on Automatic Room Cleaner with the help of Arduino and ultrasonic sensors.");
+		p.setProject_role("Writter and Researcher");
+		p.setResume(resume);
+		
+		Projects probje=new Projects();
+		probje.setProject_name("Research paper on Intelligent Health Monitoring System using wearable devices\n and Smartphones.");
+		probje.setProject_role("Writter and Researcher");
+		probje.setResume(resume);
+		
+		
+		Projects probje1=new Projects();
+		probje.setProject_name("Research paper on Intelligent Health Monitoring System using wearable devices\n and Smartphones.");
+		probje.setProject_role("Writter and Researcher");
+		probje.setResume(resume);
 		
 		List<Projects> projectlist=new LinkedList<Projects>();
-		Projects p=new Projects(9090,"sampleplproject","devoloper",resume);
-		Projects p1=new Projects(8080,"highend project","devoloper",resume);
 		projectlist.add(p);
-		projectlist.add(p1);
+		projectlist.add(probje);
+		projectlist.add(probje1);
+		
+		
+		resume.setEducation_list(edulist);
+		resume.setProjects_Worked(projectlist);
+		resumerepository.save(resume);
+		
+		
+		
 		prorepo.saveAll(projectlist);
+		edurepo.saveAll(edulist);
 		
-		
-		try {
-			//resumerepository.save(resume);
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		System.out.println("done");
 		log.info("Table Data inserted");
 		};
 	}

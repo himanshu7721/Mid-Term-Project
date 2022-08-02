@@ -1,38 +1,98 @@
 <header>
     <mat-card *ngFor="let resume of Resumes" class="headername">
-    <mat-card-title>{{resume.name}}</mat-card-title>
+    <mat-card-title style="font-style:oblique;">{{resume.name}}</mat-card-title>
     <mat-card-subtitle style="color:aliceblue;">Resume</mat-card-subtitle>
 </mat-card>
 </header>
 
 
 
-<mat-card *ngFor="let resume of Resumes" class="headername">
-    <mat-card-title>Basic Details</mat-card-title>
+<mat-card *ngFor="let resume of Resumes" class="header2">
+    <mat-card-title style="font-style:oblique;">Basic Details</mat-card-title>
     <br>
-    <mat-card-content>&#9993;  {{resume.emailid}}</mat-card-content>
-    <mat-card-content>&#9906;  {{resume.address}}</mat-card-content>
-    <mat-card-content>&#9742;  {{resume.phonenumber}}</mat-card-content>
-    <mat-card-content>&#9741;  {{resume.date_of_birth}}</mat-card-content>
-    <mat-card-content></mat-card-content>
+    <table>
+
+    <tr>
+        <td>
+    <mat-card-content style="font-style:oblique;">&#9993;  {{resume.emailid}}</mat-card-content>
+    <mat-card-content style="font-style:oblique;">&#9906;  {{resume.address}}</mat-card-content>
+    </td>
+    <td>
+    <mat-card-content style="text-align: right;font-style:oblique;">&#9742;  {{resume.phonenumber}}</mat-card-content>
+    <mat-card-content style="text-align: right;font-style:oblique;">&#9741;  {{resume.date_of_birth}}</mat-card-content>
+    </td>
+    </tr>
+    </table>
+    <mat-card-content style="text-align:right;">
+    
+        <button (click)="openDialog()" mat-fab color="primary" aria-label="Example icon button with a edit icon" >
+            <mat-icon>edit</mat-icon>
+          </button>
+    
+    </mat-card-content>
     <mat-card-content></mat-card-content>
 
 </mat-card>
 
 
+
+
 <table>
     <tr>
         <td rowspan="2">
-            <mat-card *ngFor="let education of Education" class="headername">
-                <mat-card-header>Education</mat-card-header>
-                <mat-card-content>{{education[0]}}</mat-card-content>
-                </mat-card>  
+            <mat-card *ngFor="let resume of Resumes" class="header3">
+                <mat-card-header><h1 style="color:rgb(73, 73, 94)">Education</h1></mat-card-header>
+                <br>
+                <mat-card-content>&#10122; {{resume.education_list[0].board_name}}</mat-card-content>
+                <mat-card-content> {{resume.education_list[0].percentage}}</mat-card-content>
+                <br><br>
+                <mat-card-content>&#10123; {{resume.education_list[1].board_name}}</mat-card-content>
+                <mat-card-content> {{resume.education_list[1].percentage}}</mat-card-content>
+
+                </mat-card>
         </td>
         <td>
-            <mat-card *ngFor="let resume of Resumes" class="headername">
-                <mat-card-content>{{resume.skills[0]}}</mat-card-content>
-                <mat-card-content>{{resume.skills[1]}}</mat-card-content>
-                </mat-card> 
+            <h2>Skills</h2>
+                <mat-chip-list  *ngFor="let resume of Resumes" aria-label="Fish selection" >
+                    <mat-chip color="none" selected>{{resume.skills[0]}}</mat-chip>
+                    <mat-chip color="accent" selected>{{resume.skills[1]}}</mat-chip>
+                    <mat-chip color="none" selected>{{resume.skills[2]}}</mat-chip>
+                    <mat-chip color="warn" selected>{{resume.skills[3]}}</mat-chip>
+                    <mat-chip color="accent" selected>{{resume.skills[4]}}</mat-chip>
+                    <mat-chip color="accent" selected>{{resume.skills[5]}}</mat-chip>
+                    <mat-chip color="primary" selected>{{resume.skills[6]}}</mat-chip>
+                    <mat-chip color="accent" selected>{{resume.skills[7]}}</mat-chip>
+                    <mat-chip color="none" selected>{{resume.skills[8]}}</mat-chip>
+                    <mat-chip color="warn" selected>{{resume.skills[9]}}</mat-chip>
+                    <mat-chip color="none" selected>{{resume.skills[10]}}</mat-chip>
+                  </mat-chip-list>
         </td>
+    </tr>
+    <tr>
+        <td>
+            <h2>Interests</h2>
+                <mat-chip-list  *ngFor="let resume of Resumes" aria-label="Fish selection" >
+                    <mat-chip color="primary" selected>{{resume.interests[0]}}</mat-chip>
+                    <mat-chip color="accent" selected>{{resume.interests[1]}}</mat-chip>
+                    <mat-chip color="none" selected>{{resume.interests[2]}}</mat-chip>
+                    <mat-chip color="warn" selected>{{resume.interests[3]}}</mat-chip>
+                    <mat-chip color="accent" selected>{{resume.interests[4]}}</mat-chip>
+                  </mat-chip-list>
+        </td>
+        
+        </tr>
+        <tr>
+            <td>
+                <mat-card *ngFor="let resume of Resumes" class="header3">
+                    <mat-card-header><h1 style="color:rgb(73, 73, 94)">Projects</h1></mat-card-header>
+                    <mat-card-content>&#10122; {{resume.projects_Worked[0].project_name}}</mat-card-content>
+                    <mat-card-content>{{resume.projects_Worked[0].project_role}}</mat-card-content>
+                    <br><br>
+                    <mat-card-content>&#10123; {{resume.projects_Worked[1].project_name}}</mat-card-content>
+                    <mat-card-content>{{resume.projects_Worked[1].project_role}}</mat-card-content>
+
+    
+                    </mat-card>
+            </td>
     </tr>
 </table>

@@ -1,0 +1,35 @@
+
+ 
+    <mat-form-field>
+        <mat-label>Enter Phone Number To Update</mat-label>
+    <input [(ngModel)]="Resume.phonenumber"
+    name="phoneNumber"
+    matInput placeholder="Enter Mobile number" id="mobileNumber" minlength="10" maxlength="10" [formControl]="tel" required>
+    <mat-icon matSuffix>phone</mat-icon>
+    <mat-error *ngIf="tel.invalid">{{getError()}}</mat-error>
+    </mat-form-field>
+
+
+  <mat-form-field>
+    <mat-label>Enter your email</mat-label>
+    <input 
+    [(ngModel)]="Resume.emailid"
+    matInput placeholder="pat@example.com" [formControl]="email" required>
+    <mat-icon matSuffix>mail</mat-icon>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Address to update</mat-label>
+    <textarea 
+    [(ngModel)]="Resume.address"
+     matInput
+     [formControl]="addres"></textarea>
+     <mat-icon matSuffix>address</mat-icon>
+     <mat-error *ngIf="addres.invalid">{{getError()}}</mat-error>
+  </mat-form-field>
+
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button (click)="onsubmit()" cdkFocusInitial>Ok</button>
+  </div>

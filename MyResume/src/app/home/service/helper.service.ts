@@ -5,28 +5,27 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class HelperService {
-
-  constructor(private httpclient:HttpClient) { }
+ rid:any;
+  constructor(private http:HttpClient) { }
   getallResumes()
   {
     console.log("hey buddy");
-    return this.httpclient.get('http://localhost:8080/getresume');
+    return this.http.get('http://localhost:8080/getresume');
     
   }
-  getAllEducation(Resumes:any)
-  {
-    console.log("inside eudcation");
-    return this.httpclient.post('http://localhost:8080/getEducation',JSON.stringify(Resumes));
-  }
-  getAllProjects(Resumes:any)
-  {
-    console.log("inside projects");
-    return this.httpclient.post('http://localhost:8080/getProjects',JSON.stringify(Resumes));
-  }
-  /*updatedata()
+  
+  updatedata(updatedata:any)
   {
     console.log("inside update");
-    return this.httpclient.put('http://localhost:8080/');
+    console.log(updatedata);
+    console.log(this.rid);
+    let reid=this.rid;
+    return this.http.put<any>(`http://localhost:8080/updateemail/${this.rid}`,updatedata);
   }
-  */
+
+  setid(id: any)
+  {
+    this.rid=id;
+  }
+  
 }

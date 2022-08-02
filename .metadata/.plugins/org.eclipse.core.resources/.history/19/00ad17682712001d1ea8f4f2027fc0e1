@@ -1,0 +1,122 @@
+package com.example.demo;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import org.hibernate.criterion.ProjectionList;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.annotation.Bean;
+
+import com.example.demo.entity.Education;
+import com.example.demo.entity.Projects;
+import com.example.demo.entity.Resume;
+import com.example.demo.repository.EducationRepository;
+import com.example.demo.repository.ProjectsRepository;
+import com.example.demo.repository.ResumeRepository;
+import com.example.demo.service.ResumeSavingService;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@SpringBootApplication
+public class AssessmentApplication {
+	/*@Autowired
+	static ResumeSavingService reservice;*/
+	
+	public static void main(String[] args) {
+		SpringApplication.run(AssessmentApplication.class, args);
+	}
+	
+	@Bean
+	  public CommandLineRunner demo(ResumeRepository resumerepository, EducationRepository edurepo, ProjectsRepository prorepo) {
+		
+		
+		return (args) -> {
+			List<String> skills=new LinkedList<String>();
+		skills.add("java");
+		skills.add("java2");
+		
+		List<String> languages=new LinkedList<>();
+		languages.add("hindi");
+		languages.add("english");
+		
+		List<String> interests=new LinkedList<>();
+		interests.add("playing");
+		interests.add("game");
+		
+		Resume resume=new Resume();
+		resume.setName("Name");
+		resume.setAddress("address");
+		resume.setDate_of_birth("dob");
+		resume.setEmailid("emailid");
+		resume.setPhonenumber("8989898");
+		resume.setInterests(interests);
+		resume.setLanguages_known(languages);
+		resume.setSkills(skills);
+		
+		
+		
+		
+		
+		
+		//Education edu=new Education(1,"hbpose","98",resume);
+		
+		Education edu=new Education();
+		edu.setBoard_name("hpbose");
+		edu.setPercentage("98");
+		edu.setResume(resume);
+		
+		
+		Education eduobj=new Education();
+		eduobj.setBoard_name("cbse");
+		eduobj.setPercentage("78");
+		eduobj.setResume(resume);
+		
+		List<Education> edulist=new LinkedList<Education>();
+		edulist.add(edu);
+		edulist.add(eduobj);
+		
+		
+		
+		//edurepo.saveAll(edulist);
+		
+		
+		
+		
+		Projects p=new Projects();
+		p.setProject_name("project1");
+		p.setProject_role("developer");
+		p.setResume(resume);
+		
+		Projects probje=new Projects();
+		probje.setProject_name("demoproject");
+		probje.setProject_role("tester");
+		probje.setResume(resume);
+		
+		List<Projects> projectlist=new LinkedList<Projects>();
+		projectlist.add(p);
+		projectlist.add(probje);
+		
+		
+		resume.setEducation_list(edulist);
+		resume.setProjects_Worked(projectlist);
+		resumerepository.save(resume);
+		
+		
+		
+		prorepo.saveAll(projectlist);
+		edurepo.saveAll(edulist);
+		
+		System.out.println("done");
+		log.info("Table Data inserted");
+		};
+	}
+
+}

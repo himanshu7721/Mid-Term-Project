@@ -17,6 +17,9 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Data;
 
 @Entity
@@ -42,13 +45,18 @@ public class Resume implements Serializable  {
 	@ElementCollection(targetClass=String.class)
 	private List<String> interests;
 	
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(targetEntity=Education.class, mappedBy = "resume")
-	List<Education> education_list;
 	
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(targetEntity=Projects.class, mappedBy = "resume")
-	List<Projects> projects_Worked;
+	//@JsonIgnore
+	//@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(targetEntity=Education.class, mappedBy = "resume", cascade=CascadeType.MERGE)
+	@JsonManagedReference(value="selling-item")
+	private List<Education> education_list;
+	
+	//@LazyCollection(LazyCollectionOption.FALSE)
+	//@JsonIgnore
+	@OneToMany(targetEntity=Projects.class, mappedBy = "resume", cascade=CascadeType.MERGE)
+	@JsonManagedReference(value="selling-item1")
+	private List<Projects> projects_Worked;
 
 	
 	public Resume() {
@@ -56,9 +64,9 @@ public class Resume implements Serializable  {
 	}
 
 
-
 	public Resume(long resume_id, String name, String date_of_birth, String phonenumber, String address, String emailid,
-			List<String> skills, List<String> languages_known, List<String> interests) {
+			List<String> skills, List<String> languages_known, List<String> interests, List<Education> education_list,
+			List<Projects> projects_Worked) {
 		super();
 		this.resume_id = resume_id;
 		this.name = name;
@@ -69,13 +77,14 @@ public class Resume implements Serializable  {
 		this.skills = skills;
 		this.languages_known = languages_known;
 		this.interests = interests;
+		this.education_list = education_list;
+		this.projects_Worked = projects_Worked;
 	}
-	
-	
+
+
 	public long getResume_id() {
 		return resume_id;
 	}
-
 
 
 	public void setResume_id(long resume_id) {
@@ -83,11 +92,9 @@ public class Resume implements Serializable  {
 	}
 
 
-
 	public String getName() {
 		return name;
 	}
-
 
 
 	public void setName(String name) {
@@ -95,11 +102,9 @@ public class Resume implements Serializable  {
 	}
 
 
-
 	public String getDate_of_birth() {
 		return date_of_birth;
 	}
-
 
 
 	public void setDate_of_birth(String date_of_birth) {
@@ -107,11 +112,9 @@ public class Resume implements Serializable  {
 	}
 
 
-
 	public String getPhonenumber() {
 		return phonenumber;
 	}
-
 
 
 	public void setPhonenumber(String phonenumber) {
@@ -119,11 +122,9 @@ public class Resume implements Serializable  {
 	}
 
 
-
 	public String getAddress() {
 		return address;
 	}
-
 
 
 	public void setAddress(String address) {
@@ -131,11 +132,9 @@ public class Resume implements Serializable  {
 	}
 
 
-
 	public String getEmailid() {
 		return emailid;
 	}
-
 
 
 	public void setEmailid(String emailid) {
@@ -143,11 +142,9 @@ public class Resume implements Serializable  {
 	}
 
 
-
 	public List<String> getSkills() {
 		return skills;
 	}
-
 
 
 	public void setSkills(List<String> skills) {
@@ -155,11 +152,9 @@ public class Resume implements Serializable  {
 	}
 
 
-
 	public List<String> getLanguages_known() {
 		return languages_known;
 	}
-
 
 
 	public void setLanguages_known(List<String> languages_known) {
@@ -167,11 +162,9 @@ public class Resume implements Serializable  {
 	}
 
 
-
 	public List<String> getInterests() {
 		return interests;
 	}
-
 
 
 	public void setInterests(List<String> interests) {
@@ -179,7 +172,28 @@ public class Resume implements Serializable  {
 	}
 
 
+	public List<Education> getEducation_list() {
+		return education_list;
+	}
 
+
+	public void setEducation_list(List<Education> education_list) {
+		this.education_list = education_list;
+	}
+
+
+	public List<Projects> getProjects_Worked() {
+		return projects_Worked;
+	}
+
+
+	public void setProjects_Worked(List<Projects> projects_Worked) {
+		this.projects_Worked = projects_Worked;
+	}
+
+
+
+	
 	
 	
 	

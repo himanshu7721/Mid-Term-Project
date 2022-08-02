@@ -16,10 +16,14 @@ import {MatButtonModule} from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogBoxComponent } from './dialog-box/dialog-box.component';
+import {MatChipsModule} from '@angular/material/chips';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    DialogBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +41,8 @@ import {MatIconModule} from '@angular/material/icon';
     FormsModule,
     MatSnackBarModule,
     MatIconModule,
+    MatDialogModule,
+    MatChipsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

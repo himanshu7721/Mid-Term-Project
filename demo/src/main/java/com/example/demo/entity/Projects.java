@@ -2,12 +2,16 @@ package com.example.demo.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -19,9 +23,12 @@ public class Projects implements Serializable {
 	private long project_id;
 	private String project_name;
 	private String project_role;
-	@ManyToOne(targetEntity=Resume.class)
+	
+	//@JsonIgnore
+	@ManyToOne(targetEntity=Resume.class,cascade=CascadeType.MERGE)
     @JoinColumn(name = "Resume_id")
-	Resume resume;
+	@JsonBackReference(value="selling-item1")
+	private Resume resume;
 	
 	public Projects() {
 		super();
