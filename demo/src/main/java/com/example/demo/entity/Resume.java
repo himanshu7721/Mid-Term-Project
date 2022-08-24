@@ -1,26 +1,17 @@
 package com.example.demo.entity;
 
 import java.io.Serializable;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-import lombok.Data;
 
 @Entity
 public class Resume implements Serializable  {
@@ -45,6 +36,8 @@ public class Resume implements Serializable  {
 	@ElementCollection(targetClass=String.class)
 	private List<String> interests;
 	
+	@ElementCollection(targetClass=String.class)
+	private List<String> Strength;
 	
 	//@JsonIgnore
 	//@LazyCollection(LazyCollectionOption.FALSE)
@@ -62,11 +55,9 @@ public class Resume implements Serializable  {
 	public Resume() {
 		super();
 	}
-
-
 	public Resume(long resume_id, String name, String date_of_birth, String phonenumber, String address, String emailid,
-			List<String> skills, List<String> languages_known, List<String> interests, List<Education> education_list,
-			List<Projects> projects_Worked) {
+			List<String> skills, List<String> languages_known, List<String> interests, List<String> strength,
+			List<Education> education_list, List<Projects> projects_Worked) {
 		super();
 		this.resume_id = resume_id;
 		this.name = name;
@@ -77,10 +68,10 @@ public class Resume implements Serializable  {
 		this.skills = skills;
 		this.languages_known = languages_known;
 		this.interests = interests;
+		Strength = strength;
 		this.education_list = education_list;
 		this.projects_Worked = projects_Worked;
 	}
-
 
 	public long getResume_id() {
 		return resume_id;
@@ -172,6 +163,16 @@ public class Resume implements Serializable  {
 	}
 
 
+	public List<String> getStrength() {
+		return Strength;
+	}
+
+
+	public void setStrength(List<String> strength) {
+		Strength = strength;
+	}
+
+
 	public List<Education> getEducation_list() {
 		return education_list;
 	}
@@ -191,10 +192,6 @@ public class Resume implements Serializable  {
 		this.projects_Worked = projects_Worked;
 	}
 
-
-
-	
-	
 	
 	
 }

@@ -1065,3 +1065,4 @@
 2022-08-02 14:37:55,537 [Worker-41: Launching AssessmentApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2022-08-02 14:37:55,537 [Worker-41: Launching AssessmentApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
 2022-08-02 14:37:55,538 [Worker-41: Launching AssessmentApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\Company_Full_Time\Mid-Term-Assessment\demo\src\test\resources
+2022-08-03 10:45:16,447 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.

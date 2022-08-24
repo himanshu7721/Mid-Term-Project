@@ -39,6 +39,9 @@ public class AssessmentApplication {
 		
 		
 		return (args) -> {
+			
+			//skills
+			
 			List<String> skills=new LinkedList<String>();
 		skills.add("java");
 		skills.add("c language");
@@ -53,17 +56,29 @@ public class AssessmentApplication {
 		skills.add("Eclipse");
 		skills.add("java2");
 		
+		//languages
+		
 		List<String> languages=new LinkedList<>();
-		languages.add("hindi");
-		languages.add("english");
-		languages.add("frence");
+		languages.add("Hindi");
+		languages.add("English");
+		
+		List<String> Strength=new LinkedList<>();
+		Strength.add("Hardworking and Smart working");
+		Strength.add("Ambitious");
+		Strength.add("Teamwork");
+		Strength.add("Good Listener");
+		Strength.add("Punctuality");
+		//interests
 		
 		List<String> interests=new LinkedList<>();
-		interests.add("playing");
-		interests.add("game");
+		interests.add("Outdoor Gaming");
+		interests.add("ER Sports");
 		interests.add("Hiking");
 		interests.add("Coding");
 		interests.add("Travelling");
+		
+		
+		//Resumes
 		
 		Resume resume=new Resume();
 		resume.setName("Himanshu Sharma");
@@ -74,10 +89,10 @@ public class AssessmentApplication {
 		resume.setInterests(interests);
 		resume.setLanguages_known(languages);
 		resume.setSkills(skills);
+		resume.setStrength(Strength);
 		
 		
-		
-		
+		//Education
 		
 		
 		//Education edu=new Education(1,"hbpose","98",resume);
@@ -94,9 +109,9 @@ public class AssessmentApplication {
 		eduobj.setResume(resume);
 		
 		Education eduobj1=new Education();
-		eduobj.setBoard_name("Bachelor in Computer Science Engineering from Chitkara University(Pursuing)");
-		eduobj.setPercentage("CGPA/Percentage- 98.80%");
-		eduobj.setResume(resume);
+		eduobj1.setBoard_name("Bachelor in Computer Science Engineering from Chitkara University(Pursuing)");
+		eduobj1.setPercentage("CGPA/Percentage- 98.80%");
+		eduobj1.setResume(resume);
 		
 		List<Education> edulist=new LinkedList<Education>();
 		edulist.add(edu);
@@ -107,28 +122,35 @@ public class AssessmentApplication {
 		//edurepo.saveAll(edulist);
 		
 		
+		//Projects
 		
 		
 		Projects p=new Projects();
-		p.setProject_name("Project on Automatic Room Cleaner with the help of Arduino and ultrasonic sensors.");
-		p.setProject_role("Writter and Researcher");
+		p.setProject_name("Angular and SpringBoot project on Agriculture Loan Portal. Technologies used are springboot and angular.");
+		p.setProject_role("Developer");
 		p.setResume(resume);
 		
 		Projects probje=new Projects();
-		probje.setProject_name("Research paper on Intelligent Health Monitoring System using wearable devices\n and Smartphones.");
+		probje.setProject_name("Project on Car Selling Platform using angular and springboot.");
 		probje.setProject_role("Writter and Researcher");
 		probje.setResume(resume);
 		
 		
 		Projects probje1=new Projects();
-		probje.setProject_name("Research paper on Intelligent Health Monitoring System using wearable devices\n and Smartphones.");
-		probje.setProject_role("Writter and Researcher");
-		probje.setResume(resume);
+		probje1.setProject_name("Research paper on Intelligent Health Monitoring System using wearable devices\n and Smartphones.");
+		probje1.setProject_role("Writter and Researcher");
+		probje1.setResume(resume);
+		
+		Projects probje2=new Projects();
+		probje2.setProject_name("Project on Automatic Room Cleaner with the help of Arduino and ultrasonic sensors.");
+		probje2.setProject_role("Writter and Researcher");
+		probje2.setResume(resume);
 		
 		List<Projects> projectlist=new LinkedList<Projects>();
 		projectlist.add(p);
 		projectlist.add(probje);
 		projectlist.add(probje1);
+		projectlist.add(probje2);
 		
 		
 		resume.setEducation_list(edulist);

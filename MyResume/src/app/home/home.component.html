@@ -8,7 +8,7 @@
 
 
 <mat-card *ngFor="let resume of Resumes" class="header2">
-    <mat-card-title style="font-style:oblique;">Basic Details</mat-card-title>
+    <mat-card-title style="font-style:oblique;"><u>Basic Details</u></mat-card-title>
     <br>
     <table>
 
@@ -41,7 +41,7 @@
     <tr>
         <td rowspan="2">
             <mat-card *ngFor="let resume of Resumes" class="header3">
-                <mat-card-header><h1 style="color:rgb(73, 73, 94)">Education</h1></mat-card-header>
+                <mat-card-header><h1 style="color:rgb(73, 130, 174)"><b><u>Education</u></b></h1></mat-card-header>
                 <br>
                 <mat-card-content>&#10122; {{resume.education_list[0].board_name}}</mat-card-content>
                 <mat-card-content> {{resume.education_list[0].percentage}}</mat-card-content>
@@ -52,7 +52,7 @@
                 </mat-card>
         </td>
         <td>
-            <h2>Skills</h2>
+            <h2><u>Skills</u></h2>
                 <mat-chip-list  *ngFor="let resume of Resumes" aria-label="Fish selection" >
                     <mat-chip color="none" selected>{{resume.skills[0]}}</mat-chip>
                     <mat-chip color="accent" selected>{{resume.skills[1]}}</mat-chip>
@@ -70,7 +70,7 @@
     </tr>
     <tr>
         <td>
-            <h2>Interests</h2>
+            <h2><u>Interests</u></h2>
                 <mat-chip-list  *ngFor="let resume of Resumes" aria-label="Fish selection" >
                     <mat-chip color="primary" selected>{{resume.interests[0]}}</mat-chip>
                     <mat-chip color="accent" selected>{{resume.interests[1]}}</mat-chip>
@@ -84,15 +84,25 @@
         <tr>
             <td>
                 <mat-card *ngFor="let resume of Resumes" class="header3">
-                    <mat-card-header><h1 style="color:rgb(73, 73, 94)">Projects</h1></mat-card-header>
+                    <mat-card-header><h1 style="color:rgb(73, 130, 174)"><b><u>Projects</u></b></h1></mat-card-header>
                     <mat-card-content>&#10122; {{resume.projects_Worked[0].project_name}}</mat-card-content>
-                    <mat-card-content>{{resume.projects_Worked[0].project_role}}</mat-card-content>
+                    <mat-card-content><span style="color:rgb(80, 147, 162)">Role:-  </span>{{resume.projects_Worked[0].project_role}}</mat-card-content>
                     <br><br>
                     <mat-card-content>&#10123; {{resume.projects_Worked[1].project_name}}</mat-card-content>
-                    <mat-card-content>{{resume.projects_Worked[1].project_role}}</mat-card-content>
+                    <mat-card-content><span style="color:rgb(80, 147, 162)">Role:-  </span>{{resume.projects_Worked[1].project_role}}</mat-card-content>
 
     
                     </mat-card>
+            </td>
+            <td *ngFor="let resume of Resumes">
+                <h1><b><u>Strengths</u></b></h1>
+                <ul>
+                    <li>{{resume.strength[0]}}</li>
+                    <li>{{resume.strength[1]}}</li>
+                    <li>{{resume.strength[2]}}</li>
+                    <li>{{resume.strength[3]}}</li>
+                    <li>{{resume.strength[4]}}</li>
+                </ul>
             </td>
     </tr>
 </table>
